@@ -1,2 +1,2 @@
 #!/bin/bash
-docker compose up -d -f compose.ca.yml
+docker compose up -d -f compose.va.yml
