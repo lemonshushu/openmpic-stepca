@@ -7,6 +7,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./ca_data:/home/step
+    ports:
+      - 9000:9000
     environment:
       - DOCKER_STEPCA_INIT_NAME=MMLAB
       - DOCKER_STEPCA_INIT_DNS_NAMES=localhost,mmlab-ca.lmss.cc
@@ -25,20 +27,6 @@ services:
         target: /app/config/uvicorn_config.yaml
     volumes:
       - ./ca_resources:/app/resources
-  caddy:
-    container_name: caddy
-    image: caddy:alpine
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - $PWD/ca_caddy_conf:/etc/caddy
-      - caddy_data:/data
-      - caddy_config:/config
 configs:
   coordinator_config:
     content: |
@@ -52,6 +40,3 @@ configs:
     file: ./common_config/log_config.yaml
   uvicorn_config:
     file: ./common_config/uvicorn_config.yaml
-volumes:
-  caddy_data:
-  caddy_config:
