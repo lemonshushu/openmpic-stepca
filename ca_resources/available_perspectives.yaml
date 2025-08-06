@@ -1,0 +1,11 @@
+available_regions:
+  -
+    code: "ohio"
+    name: "North America (Ohio)"
+    rir: "arin"
+    too_close_codes: []
+  -
+    code: "seoul"
+    name: "Asia Pacific (Seoul)"
+    rir: "apnic"
+    too_close_codes: []

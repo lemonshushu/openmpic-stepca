@@ -1,0 +1,7 @@
+dcv.mmlab-va1.lmss.cc dcv.mmlab-va2.lmss.cc {
+    reverse_proxy dcv_checker:80
+}
+
+caa.mmlab-va1.lmss.cc caa.mmlab-va2.lmss.cc {
+    reverse_proxy caa_checker:80
+}

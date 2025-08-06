@@ -1,0 +1,3 @@
+mmlab-ca.lmss.cc {
+    reverse_proxy ca:9000
+}

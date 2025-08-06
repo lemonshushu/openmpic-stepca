@@ -1,0 +1,80 @@
+name: open-mpic
+
+services:
+  dcv_checker:
+    image: ghcr.io/open-mpic/dcv_checker:latest
+    configs:
+      - source: dcv_config
+        target: /app/config/app.conf
+      - source: log_config
+        target: /app/config/log_config.yaml
+      - source: uvicorn_config
+        target: /app/config/uvicorn_config.yaml
+    dns:
+      - 172.28.0.2
+  caa_checker:
+    image: ghcr.io/open-mpic/caa_checker:latest
+    configs:
+      - source: caa_config
+        target: /app/config/app.conf
+      - source: log_config
+        target: /app/config/log_config.yaml
+      - source: uvicorn_config
+        target: /app/config/uvicorn_config.yaml
+    dns:
+      - 172.28.0.2
+
+  unbound:
+    image: ghcr.io/open-mpic/unbound:latest
+    restart: unless-stopped
+    #volumes:
+    #  - ./va_unbound_config/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
+    networks:
+      default:
+        ipv4_address: 172.28.0.2 # static IP address within acceptable range
+
+  caddy:
+    image: caddy-alpine
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - $PWD/va_caddy_conf:/etc/caddy
+      - caddy_data:/data
+      - caddy_config:/config
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: mpic-network
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+          gateway: 172.28.0.1
+          ip_range: 172.28.5.0/24
+
+configs:
+  dcv_config:
+    content: |
+      verify_ssl=True
+      http_client_timeout_seconds=5
+      dns_timeout_seconds=1
+      dns_lifetime_resolution_seconds=2
+  caa_config:
+    content: |
+      default_caa_domains="%""
+      dns_timeout_seconds=1
+      dns_lifetime_resolution_seconds=2
+  log_config:
+    file: ./common_config/log_config.yaml
+  uvicorn_config:
+    file: ./common_config/uvicorn_config.yaml
+volumes:
+  caddy_data:
+  caddy_config:

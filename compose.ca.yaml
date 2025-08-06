@@ -1,0 +1,54 @@
+name: open-mpic
+
+services:
+  ca:
+    image: smallstep/step-ca
+    restart: unless-stopped
+    volumes:
+      - ./ca_data:/home/step
+    environment:
+      - DOCKER_STEPCA_INIT_NAME=MMLAB
+      - DOCKER_STEPCA_INIT_DNS_NAMES=localhost,mmlab-ca.lmss.cc
+      - DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT=true
+      - DOCKER_STEPCA_INIT_ACME=true
+  coordinator:
+    image: ghcr.io/open-mpic/coordinator:latest
+    restart: unless-stopped
+    configs:
+      - source: coordinator_config
+        target: /app/config/app.conf
+      - source: log_config
+        target: /app/config/log_config.yaml
+      - source: uvicorn_config
+        target: /app/config/uvicorn_config.yaml
+    volumes:
+      - ./ca_resources:/app/resources
+  caddy:
+    image: caddy-alpine
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - $PWD/ca_caddy_conf:/etc/caddy
+      - caddy_data:/data
+      - caddy_config:/config
+configs:
+  coordinator_config:
+    content: |
+      perspectives={"ohio":{"caa_endpoint_info":{"url":"https://caa.mmlab-va2.lmss.cc"},"dcv_endpoint_info":{"url":"https://dcv.mmlab-va2.lmss.cc"}},"seoul":{"caa_endpoint_info":{"url":"https://caa.mmlab-va1.lmss.cc"},"dcv_endpoint_info":{"url":"https://dcv.mmlab-va1.lmss.cc"}}}
+      default_perspective_count=2
+      absolute_max_attempts=2
+      hash_secret=hash_secret
+      http_client_timeout_seconds=30
+      http_client_keepalive_timeout_seconds=120
+  log_config:
+    file: ./common_config/log_config.yaml
+  uvicorn_config:
+    file: ./common_config/uvicorn_config.yaml
+volumes:
+  caddy_data:
+  caddy_config:
