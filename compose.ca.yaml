@@ -2,6 +2,7 @@ name: ca
 
 services:
   ca:
+    container_name: ca
     image: smallstep/step-ca
     restart: unless-stopped
     volumes:
@@ -12,6 +13,7 @@ services:
       - DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT=true
       - DOCKER_STEPCA_INIT_ACME=true
   coordinator:
+    container_name: coordinator
     image: ghcr.io/open-mpic/coordinator:latest
     restart: unless-stopped
     configs:
@@ -24,6 +26,7 @@ services:
     volumes:
       - ./ca_resources:/app/resources
   caddy:
+    container_name: caddy
     image: caddy:alpine
     restart: unless-stopped
     cap_add:
