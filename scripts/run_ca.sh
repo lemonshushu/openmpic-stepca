@@ -1,2 +1,2 @@
 #!/bin/bash
-docker compose -f /home/ubuntu/compose.ca.yml up -d 
+docker compose -f /home/ubuntu/openmpic-stepca/compose.ca.yml up -d 
