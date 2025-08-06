@@ -24,7 +24,7 @@ services:
     volumes:
       - ./ca_resources:/app/resources
   caddy:
-    image: caddy-alpine
+    image: caddy:latest-alpine
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
