@@ -14,6 +14,7 @@ services:
       - DOCKER_STEPCA_INIT_DNS_NAMES=localhost,mmlab-ca.lmss.cc
       - DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT=true
       - DOCKER_STEPCA_INIT_ACME=true
+      - DOCKER_STEPCA_INIT_PASSWORD=password
   coordinator:
     container_name: coordinator
     image: ghcr.io/open-mpic/coordinator:latest
