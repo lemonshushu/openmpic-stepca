@@ -22,3 +22,5 @@ sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl enable containerd.service
 sudo systemctl start containerd.service
+
+echo "alias dc='docker compose'" >> ~/.bashrc
