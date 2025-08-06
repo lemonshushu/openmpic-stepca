@@ -1,4 +1,4 @@
-name: open-mpic
+name: va
 
 services:
   dcv_checker:
