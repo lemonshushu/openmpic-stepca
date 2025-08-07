@@ -1,0 +1,4 @@
+https://mpic-hook.mmlab-ca.lmss.cc:8443 {
+    tls /mpic_certs/mpic.crt /mpic_certs/mpic.key
+    reverse_proxy mpic-hook:80
+}
