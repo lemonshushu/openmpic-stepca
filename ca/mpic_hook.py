@@ -3,7 +3,7 @@ from fastapi import FastAPI, Request, HTTPException
 import httpx, os, uuid
 
 app = FastAPI()
-MPIC_URL = os.getenv("MPIC_COORD", "http://coord.example.com/mpic")
+MPIC_URL = os.getenv("MPIC_COORD", "http://coordinator")
 
 @app.post("/shouldSign")
 async def should_sign(req: Request):
