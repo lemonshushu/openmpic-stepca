@@ -31,7 +31,7 @@ services:
     image: ghcr.io/open-mpic/unbound:latest
     restart: unless-stopped
     #volumes:
-    #  - ./va_unbound_config/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
+    #  - ./unbound_config/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
     networks:
       default:
         ipv4_address: 172.28.0.2 # static IP address within acceptable range
@@ -44,10 +44,8 @@ services:
       - NET_ADMIN
     ports:
       - "80:80"
-      - "443:443"
-      - "443:443/udp"
     volumes:
-      - $PWD/va_caddy_conf:/etc/caddy
+      - $PWD/caddy_conf:/etc/caddy
       - caddy_data:/data
       - caddy_config:/config
 
@@ -76,9 +74,9 @@ configs:
       dns_timeout_seconds=1
       dns_lifetime_resolution_seconds=2
   log_config:
-    file: ./common_config/log_config.yaml
+    file: ../common_config/log_config.yaml
   uvicorn_config:
-    file: ./common_config/uvicorn_config.yaml
+    file: ../common_config/uvicorn_config.yaml
 volumes:
   caddy_data:
   caddy_config:

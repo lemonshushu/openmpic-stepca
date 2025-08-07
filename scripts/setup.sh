@@ -24,3 +24,4 @@ sudo systemctl enable containerd.service
 sudo systemctl start containerd.service
 
 echo "alias dc='docker compose'" >> ~/.bashrc
+source ~/.bashrc

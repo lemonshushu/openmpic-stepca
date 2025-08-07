@@ -6,9 +6,9 @@ services:
     image: smallstep/step-ca
     restart: unless-stopped
     volumes:
-      - ./ca_data:/home/step
+      - ./data:/home/step
     ports:
-      - 9000:9000
+      - 443:9000
     environment:
       - DOCKER_STEPCA_INIT_NAME=MMLAB
       - DOCKER_STEPCA_INIT_DNS_NAMES=localhost,mmlab-ca.lmss.cc
@@ -27,17 +27,17 @@ services:
       - source: uvicorn_config
         target: /app/config/uvicorn_config.yaml
     volumes:
-      - ./ca_resources:/app/resources
+      - ./resources:/app/resources
 configs:
   coordinator_config:
     content: |
-      perspectives={"ohio":{"caa_endpoint_info":{"url":"https://caa.mmlab-va2.lmss.cc"},"dcv_endpoint_info":{"url":"https://dcv.mmlab-va2.lmss.cc"}},"seoul":{"caa_endpoint_info":{"url":"https://caa.mmlab-va1.lmss.cc"},"dcv_endpoint_info":{"url":"https://dcv.mmlab-va1.lmss.cc"}}}
+      perspectives={"ohio":{"caa_endpoint_info":{"url":"http://caa.mmlab-va2.lmss.cc"},"dcv_endpoint_info":{"url":"http://dcv.mmlab-va2.lmss.cc"}},"seoul":{"caa_endpoint_info":{"url":"http://caa.mmlab-va1.lmss.cc"},"dcv_endpoint_info":{"url":"http://dcv.mmlab-va1.lmss.cc"}}}
       default_perspective_count=2
       absolute_max_attempts=2
       hash_secret=hash_secret
       http_client_timeout_seconds=30
       http_client_keepalive_timeout_seconds=120
   log_config:
-    file: ./common_config/log_config.yaml
+    file: ../common_config/log_config.yaml
   uvicorn_config:
-    file: ./common_config/uvicorn_config.yaml
+    file: ../common_config/uvicorn_config.yaml
