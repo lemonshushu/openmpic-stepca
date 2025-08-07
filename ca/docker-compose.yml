@@ -35,17 +35,8 @@ services:
       context: .
       dockerfile: Dockerfile.mpic-hook
     restart: unless-stopped
-  caddy:
-    container_name: caddy
-    image: caddy:latest
-    restart: unless-stopped
     volumes:
-      - ./caddy_config/Caddyfile:/etc/caddy/Caddyfile
-      - ./caddy_data/caddy_data:/data
-      - ./caddy_data/caddy_config:/config
-      - ./mpic_certs:/mpic_certs:ro
-    ports:
-      - 8443:8443
+      - ./mpic_certs:/certs:ro
 configs:
   coordinator_config:
     content: |
