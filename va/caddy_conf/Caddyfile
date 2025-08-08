@@ -2,6 +2,6 @@ http://dcv.mmlab-va1.lmss.cc:80 http://dcv.mmlab-va2.lmss.cc:80 {
     reverse_proxy dcv_checker:80
 }
 
-https://caa.mmlab-va1.lmss.cc:80 http://caa.mmlab-va2.lmss.cc:80 {
+http://caa.mmlab-va1.lmss.cc:80 http://caa.mmlab-va2.lmss.cc:80 {
     reverse_proxy caa_checker:80
 }
