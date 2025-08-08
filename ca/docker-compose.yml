@@ -5,7 +5,7 @@ services:
     container_name: ca
     build:
       context: certificates
-      dockerfile: certificates/docker/Dockerfile
+      dockerfile: docker/Dockerfile
     restart: unless-stopped
     volumes:
       - ./data:/home/step
