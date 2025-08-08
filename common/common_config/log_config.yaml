@@ -5,9 +5,10 @@ formatters:
     format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 handlers:
   default:
+    level: DEBUG
     formatter: default
     class: logging.StreamHandler
 root:
-  level: INFO
+  level: DEBUG
   handlers:
     - default

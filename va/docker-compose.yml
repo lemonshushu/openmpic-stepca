@@ -74,9 +74,9 @@ configs:
       dns_timeout_seconds=1
       dns_lifetime_resolution_seconds=2
   log_config:
-    file: ../common_config/log_config.yaml
+    file: ../common/common_config/log_config.yaml
   uvicorn_config:
-    file: ../common_config/uvicorn_config.yaml
+    file: ../common/common_config/uvicorn_config.yaml
 volumes:
   caddy_data:
   caddy_config:

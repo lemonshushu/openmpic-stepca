@@ -3,7 +3,9 @@ name: ca
 services:
   ca:
     container_name: ca
-    image: smallstep/step-ca
+    build:
+      context: certificates
+      dockerfile: certificates/docker/Dockerfile
     restart: unless-stopped
     volumes:
       - ./data:/home/step
@@ -15,10 +17,13 @@ services:
       - DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT=true
       - DOCKER_STEPCA_INIT_ACME=true
       - DOCKER_STEPCA_INIT_PASSWORD=password
-      - DOCKER_STEPCA_INIT_PROVISIONER_NAME=acme-mpic
   coordinator:
     container_name: coordinator
-    image: ghcr.io/open-mpic/coordinator:latest
+    # image: ghcr.io/open-mpic/coordinator:latest
+    build:
+      context: ../common/open-mpic-containers/api-implementation
+      args:
+        SERVICE_PATH: "src/mpic_coordinator_service"
     restart: unless-stopped
     configs:
       - source: coordinator_config
@@ -29,14 +34,6 @@ services:
         target: /app/config/uvicorn_config.yaml
     volumes:
       - ./resources:/app/resources
-  mpic-hook:
-    container_name: mpic-hook
-    build:
-      context: .
-      dockerfile: Dockerfile.mpic-hook
-    restart: unless-stopped
-    volumes:
-      - ./mpic_certs:/certs:ro
 configs:
   coordinator_config:
     content: |
@@ -47,6 +44,6 @@ configs:
       http_client_timeout_seconds=30
       http_client_keepalive_timeout_seconds=120
   log_config:
-    file: ../common_config/log_config.yaml
+    file: ../common/common_config/log_config.yaml
   uvicorn_config:
-    file: ../common_config/uvicorn_config.yaml
+    file: ../common/common_config/uvicorn_config.yaml
