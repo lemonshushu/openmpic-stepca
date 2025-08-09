@@ -1,0 +1,95 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.7.2 Safari/537.36" version="27.0.9">
+  <diagram name="Page-1" id="OKhKFuvfjCxX_MgxrlsG">
+    <mxGraphModel dx="2249" dy="1248" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VDD16w9bm6-BGJZstMwu-11" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="369" y="209" width="210" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-9" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="350" width="120" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="VDD16w9bm6-BGJZstMwu-1" target="VDD16w9bm6-BGJZstMwu-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-8" value="Open MPIC API" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VDD16w9bm6-BGJZstMwu-7">
+          <mxGeometry x="-0.1499" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-1" value="step-ca" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="370" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="VDD16w9bm6-BGJZstMwu-2" target="VDD16w9bm6-BGJZstMwu-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-26" value="HTTP POST&lt;div&gt;/dcv&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VDD16w9bm6-BGJZstMwu-24">
+          <mxGeometry x="0.8192" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-2" value="Open MPIC&lt;div&gt;&lt;b&gt;Coordinator&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="460" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-4" value="Open MPIC&lt;div&gt;&lt;b&gt;CAA Checker&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="220" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-5" value="Open MPIC&lt;div&gt;&lt;b&gt;DCV Checker&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="385" y="220" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="VDD16w9bm6-BGJZstMwu-6" target="VDD16w9bm6-BGJZstMwu-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="VDD16w9bm6-BGJZstMwu-6" target="VDD16w9bm6-BGJZstMwu-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-6" value="Caddy (reverse proxy)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="385" y="300" width="175" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-10" value="CA node" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="220" y="319" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-12" value="VA node 1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="424" y="179" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="VDD16w9bm6-BGJZstMwu-14" target="VDD16w9bm6-BGJZstMwu-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-17" value="ACME&lt;br&gt;(cert request &amp;amp; issuance)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VDD16w9bm6-BGJZstMwu-16">
+          <mxGeometry x="-0.392" y="-2" relative="1" as="geometry">
+            <mxPoint y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-14" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.azure.laptop" vertex="1" parent="1">
+          <mxGeometry x="150" y="209" width="66.67" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-15" value="Client" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="153.32999999999998" y="179" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="480" as="sourcePoint" />
+            <mxPoint x="519" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-29" value="HTTP POST&lt;div&gt;/caa&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VDD16w9bm6-BGJZstMwu-25">
+          <mxGeometry x="0.6935" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-42" value="&lt;font&gt;...&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=50;" vertex="1" parent="1">
+          <mxGeometry x="590" y="230" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.882;entryY=0.403;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="VDD16w9bm6-BGJZstMwu-5" target="VDD16w9bm6-BGJZstMwu-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VDD16w9bm6-BGJZstMwu-51" value="HTTP GET&lt;br&gt;&lt;div&gt;.acme-challenge/...&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VDD16w9bm6-BGJZstMwu-50">
+          <mxGeometry x="0.4299" y="-1" relative="1" as="geometry">
+            <mxPoint x="17" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
