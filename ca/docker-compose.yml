@@ -22,7 +22,6 @@ services:
     dns:
     - 172.28.0.2
   coordinator:
-    profiles: [donotstart]
     container_name: coordinator
     image: ghcr.io/open-mpic/coordinator:latest
     restart: unless-stopped
