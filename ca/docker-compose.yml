@@ -10,7 +10,7 @@ services:
     volumes:
       - ./data:/home/step
     ports:
-      - 9000:9000
+      - 443:9000
     environment:
       - DOCKER_STEPCA_INIT_NAME=MMLAB
       - DOCKER_STEPCA_INIT_DNS_NAMES=localhost,mmlab-ca.lmss.cc
@@ -24,11 +24,7 @@ services:
   coordinator:
     profiles: [donotstart]
     container_name: coordinator
-    # image: ghcr.io/open-mpic/coordinator:latest
-    build:
-      context: ../common/open-mpic-containers/api-implementation
-      args:
-        SERVICE_PATH: "src/mpic_coordinator_service"
+    image: ghcr.io/open-mpic/coordinator:latest
     restart: unless-stopped
     configs:
       - source: coordinator_config
@@ -39,6 +35,8 @@ services:
         target: /app/config/uvicorn_config.yaml
     volumes:
       - ./resources:/app/resources
+    dns:
+      - 172.28.0.2
   unbound:
     container_name: unbound
     image: ghcr.io/open-mpic/unbound:latest
