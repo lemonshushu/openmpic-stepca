@@ -17,7 +17,12 @@ services:
       - DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT=true
       - DOCKER_STEPCA_INIT_ACME=true
       - DOCKER_STEPCA_INIT_PASSWORD=password
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    dns:
+    - 172.28.0.2
   coordinator:
+    profiles: [donotstart]
     container_name: coordinator
     # image: ghcr.io/open-mpic/coordinator:latest
     build:
@@ -34,10 +39,20 @@ services:
         target: /app/config/uvicorn_config.yaml
     volumes:
       - ./resources:/app/resources
+  unbound:
+    container_name: unbound
+    image: ghcr.io/open-mpic/unbound:latest
+    restart: unless-stopped
+    #volumes:
+    #  - ./unbound_config/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
+    networks:
+      default:
+        ipv4_address: 172.28.0.2 # static IP address within acceptable range
+
 configs:
   coordinator_config:
     content: |
-      perspectives={"ohio":{"caa_endpoint_info":{"url":"http://caa.mmlab-va2.lmss.cc"},"dcv_endpoint_info":{"url":"http://dcv.mmlab-va2.lmss.cc"}},"seoul":{"caa_endpoint_info":{"url":"http://caa.mmlab-va1.lmss.cc"},"dcv_endpoint_info":{"url":"http://dcv.mmlab-va1.lmss.cc"}}}
+      perspectives={"ohio":{"caa_endpoint_info":{"url":"http://mmlab-va2.lmss.cc/caa"},"dcv_endpoint_info":{"url":"http://mmlab-va2.lmss.cc/dcv"}},"seoul":{"caa_endpoint_info":{"url":"http://mmlab-va1.lmss.cc/caa"},"dcv_endpoint_info":{"url":"http://mmlab-va1.lmss.cc/dcv"}}}
       default_perspective_count=2
       absolute_max_attempts=2
       hash_secret=hash_secret
