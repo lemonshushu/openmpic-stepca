@@ -1,7 +1,5 @@
 # Open MPIC + Step-CA
 
-본 문서는 **Ubuntu 24.04**를 가정하며, 각 CA 및 VA 노드의 80 및 443 포트가 열려있어야 한다.
-
 ## Architecture
 
 ![architecture](./assets/diagram.drawio.png)
@@ -21,6 +19,9 @@
   - **Caddy**: 들어오는 http 요청의 path(`/caa` 또는 `/dcv`)에 따라 CAA Checker 또는 DCV Checker로 요청을 전달하는 리버스 프록시 컨테이너
 
 ## 사용법
+
+본 문서는 **Ubuntu 24.04**를 가정하며, 각 CA 및 VA 노드의 80 및 443 포트가 열려있어야 한다.
+
 
 먼저, CA 노드와 VA 노드 EC2 인스턴스들을 생성하고, IP주소(혹은 도메인)를 기록해 둔다.
 
