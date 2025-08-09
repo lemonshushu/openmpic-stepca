@@ -1,9 +1,9 @@
-http://0.0.0.0:80 {
-	handle_path /dcv* {
+:80 {
+	handle /dcv* {
 		reverse_proxy dcv_checker:80
 	}
 
-	handle_path /caa* {
+	handle /caa* {
 		reverse_proxy caa_checker:80
 	}
 }
