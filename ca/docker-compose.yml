@@ -60,3 +60,15 @@ configs:
     file: ../common/common_config/log_config.yaml
   uvicorn_config:
     file: ../common/common_config/uvicorn_config.yaml
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: mpic-network
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+          gateway: 172.28.0.1
+          ip_range: 172.28.5.0/24
