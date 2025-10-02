@@ -4,6 +4,7 @@ services:
   dcv_checker:
     container_name: dcv_checker
     image: ghcr.io/open-mpic/dcv_checker:latest
+    restart: unless-stopped
     configs:
       - source: dcv_config
         target: /app/config/app.conf
@@ -16,6 +17,7 @@ services:
   caa_checker:
     container_name: caa_checker
     image: ghcr.io/open-mpic/caa_checker:latest
+    restart: unless-stopped
     configs:
       - source: caa_config
         target: /app/config/app.conf
